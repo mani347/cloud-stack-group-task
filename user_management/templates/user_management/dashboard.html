@@ -1,0 +1,45 @@
+{% extends "user_management/base.html" %}
+
+{% block content %}
+
+{% if context.message %}
+<script>
+  alert("{{ context.message }}");
+</script>
+{% endif %}
+
+<br>
+<div id="{{ article.id }}">
+<div class="col-md-2"></div>
+<div class="container col-md-8">
+  <div class="card">
+    <div class="card-body">
+    <div class="row">
+      <div class="col-md-3"> <img class="img-rounded" style="height:100px; width: 100px;" src="{{ context.user.image }}" alt="No Image"> </div>
+      <div class="col-md-9"> <h3 class="text-center">{{ context.user.fname }} {{ context.user.lname }}</h3> </div>
+    </div>
+    <hr>
+    <div class="row">
+      <h1 class="text-center">Email: {{ context.user.email }}</h1>
+    </div>
+    <div class="row">
+      <h1 class="text-center">Phone: {{ context.user.phone }}</h1>
+    </div>
+    <div class="text-center">
+      <a href="{% url 'user_management:logout' %}" class="text-center btn btn-primary">Logout</a>
+    </div>
+</div>
+</div>
+</div>
+<div class="col-md-2"></div>
+</div>
+<br>
+
+<script>
+  $( document ).ready(function() {
+    console.log( "ready!" );
+    $('title').html('Dashboard');
+  });
+</script>
+
+{% endblock %}
